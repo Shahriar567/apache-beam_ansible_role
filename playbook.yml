@@ -1,0 +1,13 @@
+---
+- name: Install roles for the cluster
+  hosts: all
+  remote_user: hadoop
+  sudo: yes
+
+  roles:
+    - common
+    - spark
+    - oraclejava8
+    - master
+    - base
+

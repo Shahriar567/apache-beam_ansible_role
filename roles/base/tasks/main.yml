@@ -1,0 +1,87 @@
+# The roles to install apache-beam
+
+- name: Install Python/PIP Packages
+  apt: pkg={{item}} state=latest
+  sudo: yes
+  with_items:
+    - yum
+    - python
+    - python-dev
+    - python-pip
+    - python-virtualenv
+    - python-setuptools
+    - build-essential
+
+- name: upgrade setuptools
+  sudo: yes
+  pip: name={{ item }}
+  extra_args: --upgrade
+  with_items:
+    - setuptools
+    - avro
+    - crcmod
+    - dill
+    - futures
+    - enum34
+    - futures
+    - six
+    - hdfs
+    - docopt
+    - requests
+    - certifi
+    - chardet
+    - idna
+    - urllib3
+    - six
+    - httplib2
+    - mock
+    - funcsigs
+    - pbr
+    - six
+    - oauth2client
+    - httplib2
+    - pyasn1
+    - pyasn1-modules
+    - rsa
+    - protobuf
+    - pyvcf
+    - pyyaml
+    - typing
+
+
+
+- name: Install pip packages.
+  sudo: yes
+  pip: name={{ item }}
+  with_items:
+      - markdown
+      - virtualenv
+      # - 'requests[security]'
+      - setuptools
+
+
+
+- name: Upgrade pip
+  pip: name=pip state=latest
+  tags:
+    - packages
+
+
+- name: Install numpy
+  sudo: yes
+  pip: name={{ item }}
+  with_items:
+      - numpy
+
+- name: Install apache-beam
+  pip: name={{ item }}
+  extra_args: --upgrade --ignore-installed six
+  with_items:
+    - apache-beam
+    - apache-beam[gcd]
+    - apache-beam[test]
+    - apache-beam[docs]
+
+
+
+# --upgrade --ignore-installed six
