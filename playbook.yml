@@ -10,4 +10,12 @@
     - oraclejava8
     - master
     - base
-
+  vars:
+    apt_cache_time: 3600
+    venv: ~/venv/bin/activate     # Path to virtualenv
+    venv_packages: [python]        # List of packages required to create the virtualenv
+    venv_python: python            # Version of python to create the virtualenv with
+    venv_requirements: (undefined)  # If given, the virtualenv will have these packages installed
+    # Ownership settings
+    venv_owner: (undefined)
+    venv_group: (undefined)
